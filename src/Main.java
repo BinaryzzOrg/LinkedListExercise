@@ -2,10 +2,11 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Node headNode = new Node(0);
+		Node headNode = new Node(10);
 		SinglyLinkList linkList = new SinglyLinkList(headNode);
 
-		linkList.printLinkedList(linkList);
+		linkList.Append();
+		SinglyLinkList.printLinkedList(linkList);
 	}// end main
 
 	public void DisplayMenu() {

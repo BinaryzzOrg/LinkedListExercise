@@ -1,14 +1,31 @@
+import java.util.Scanner;
 
 public class SinglyLinkList {
 
 	Node head;
+	Node tail;
+
+	Scanner sc;
 
 	public SinglyLinkList(Node head) {
 		this.head = head;
 	}// end constructor
 
 	void Append() {
+		sc = new Scanner(System.in);
+		System.out.print("Enter a number: ");
+		int userInput = sc.nextInt();
 
+		Node newNode = new Node(userInput);
+
+		Node tempNode = head;
+		if (tempNode.next != null) {
+			tail.next = newNode;
+		} else {
+			tempNode.next = newNode;
+		}
+
+		System.out.println("The new element has been added successfully!");
 	}// end method
 
 	void Display() {
