@@ -2,13 +2,16 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Node headNode = new Node(0);
-		SinglyLinkList linkList = new SinglyLinkList(headNode);
+		SinglyLinkList linkList = new SinglyLinkList();
+		linkList.Append();
+		linkList.Append();
+		linkList.Append();
+		linkList.Append();
 
-		linkList.printLinkedList(linkList);
+		SinglyLinkList.printLinkedList(linkList);
 	}// end main
 
-	public void DisplayMenu() {
+	void DisplayMenu() {
 
 	}// end method
 
