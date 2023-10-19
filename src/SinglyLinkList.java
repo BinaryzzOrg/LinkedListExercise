@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class SinglyLinkList {
 
-	Node head;
-	Node tail;
-
+	// field variables
 	Scanner sc;
+	private Node head;
+	private Node tail;
 
+	// Msg getter and setter
 	//@formatter:off
 	String[] promptMsg = {"Enter a number: ",
 						"Enter the position of the element to be deleted: ",
@@ -45,7 +46,7 @@ public class SinglyLinkList {
 		// check for tail
 		if (IsThisNodeAvailable(tail)) {
 			Node newNode = new Node(GetUserInput(0));
-			tail.next = newNode;
+			tail.setNext(newNode);
 			tail = newNode;
 		} else {
 			CreateTail();
@@ -69,7 +70,7 @@ public class SinglyLinkList {
 
 	void CreateTail() {
 		Node tailNode = new Node(GetUserInput(0));
-		head.next = tailNode;
+		head.setNext(tailNode);
 		tail = tailNode;
 	}// end method
 
@@ -91,10 +92,10 @@ public class SinglyLinkList {
 		System.out.print("LinkedList: ");
 
 		while (currentNode != null) {
-			System.out.print(currentNode.data + ", ");
+			System.out.print(currentNode.getData() + ", ");
 
 			// go to next node
-			currentNode = currentNode.next;
+			currentNode = currentNode.getNext();
 		} // end while
 	}// end method
 }
