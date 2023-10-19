@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class SinglyLinkList {
 
-	Node head;
-	Node tail;
-
+	// field variables
 	Scanner sc;
+	private Node head;
+	private Node tail;
 
+	// Msg getter and setter
 	//@formatter:off
 	String[] promptMsg = {"Enter a number: ",
 						"Enter the position of the element to be deleted: ",
@@ -34,18 +35,18 @@ public class SinglyLinkList {
 		return userInput;
 	}// end method
 
-	void Append() {
+	void append() {
 
 		// check for head
-		if (!IsThisNodeAvailable(head)) {
-			CreateHead();
+		if (!isThisNodeAvailable(head)) {
+			createHead();
 			return;
 		} // end if else
 
 		// check for tail
-		if (IsThisNodeAvailable(tail)) {
+		if (isThisNodeAvailable(tail)) {
 			Node newNode = new Node(GetUserInput(0));
-			tail.next = newNode;
+			tail.setNext(newNode);
 			tail = newNode;
 		} else {
 			CreateTail();
@@ -54,14 +55,14 @@ public class SinglyLinkList {
 		System.out.println(GetConfirmationMsg(0));
 	}// end method
 
-	boolean IsThisNodeAvailable(Node node) {
+	boolean isThisNodeAvailable(Node node) {
 		if (node != null) {
 			return true;
 		}
 		return false;
 	}// end method
 
-	void CreateHead() {
+	void createHead() {
 		Node headNode = new Node(GetUserInput(0));
 		head = headNode;
 		System.out.println(GetConfirmationMsg(0));
@@ -69,38 +70,59 @@ public class SinglyLinkList {
 
 	void CreateTail() {
 		Node tailNode = new Node(GetUserInput(0));
-		head.next = tailNode;
+		head.setNext(tailNode);
 		tail = tailNode;
 	}// end method
 
-	void Display() {
+	void display() {
 
-	}// end method
+	}// end metho
 
-	void Delete() {
-		System.out.println("Choose the position of element to delete(start from 1)");
-		int position = scan.nextInt();
-		
-		if(position<1) {
+	void delete() {
+		System.out.print(GetPromptMsg(1));
+		int position = sc.nextInt();
+
+		if (position < 1) {
 			System.out.println("try again");
 			delete();
-		}
-		else if(position==1) {
-			head = head.next;
-		}else {
+		} else if (position == 1) {
+			head = head.getNext();
+		} else {
 			Node prev = head;
 			int count = 1;
-			while(count<position - 1) {
-				prev = prev.next;
+			while (count < position - 1) {
+				prev = prev.getNext();
 				count++;
 			}
-			Node current = prev.next;
-			prev.next = current.next;
+			Node current = prev.getNext();
+			prev.setNext(current.getNext());
 		}
 	}// end method
 
-	void DeleteAll() {
+	void deleteAll() {
+		if (!isThisNodeAvailable(head)) {
+			System.out.println("You don't have a list yet!");
+		} else {
+			int valueToBeDeleted = GetUserInput(2);
+			int counterPosition = 0;
+			Node currentNode = head;
+			boolean isValueFound = false;
+			while (currentNode != null) {
+				if (currentNode.getData() == valueToBeDeleted) {
+					// delete(counterPosition);
+					counterPosition--;
+					isValueFound = true;
+				}
+				counterPosition++;
+				currentNode = currentNode.getNext();
+			} // end while loop
 
+			if (!isValueFound) {
+				System.out.println("Value not found!");
+			} else {
+				System.out.println(GetConfirmationMsg(3));
+			}
+		} // end if else
 	}// end method
 
 	static void printLinkedList(SinglyLinkList nodeHead) {
@@ -109,10 +131,10 @@ public class SinglyLinkList {
 		System.out.print("LinkedList: ");
 
 		while (currentNode != null) {
-			System.out.print(currentNode.data + ", ");
+			System.out.print(currentNode.getData() + ", ");
 
 			// go to next node
-			currentNode = currentNode.next;
+			currentNode = currentNode.getNext();
 		} // end while
 	}// end method
 }
