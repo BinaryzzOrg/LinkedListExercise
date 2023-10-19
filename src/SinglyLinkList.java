@@ -78,7 +78,25 @@ public class SinglyLinkList {
 	}// end method
 
 	void Delete() {
-
+		System.out.println("Choose the position of element to delete(start from 1)");
+		int position = scan.nextInt();
+		
+		if(position<1) {
+			System.out.println("try again");
+			delete();
+		}
+		else if(position==1) {
+			head = head.next;
+		}else {
+			Node prev = head;
+			int count = 1;
+			while(count<position - 1) {
+				prev = prev.next;
+				count++;
+			}
+			Node current = prev.next;
+			prev.next = current.next;
+		}
 	}// end method
 
 	void DeleteAll() {
