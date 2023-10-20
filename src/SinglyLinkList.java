@@ -74,9 +74,22 @@ public class SinglyLinkList {
 		tail = tailNode;
 	}// end method
 
-	void display() {
-
-	}// end metho
+	 void display() {
+	// check if the head has value 
+		if (head == null ) {
+			System.out.println( " Linkedlist is empty ");
+			return;  
+		}
+		Node currentNode = head;
+	    System.out.print("LinkedList :  ");
+	    
+		while (currentNode != null ) {
+			System.out.print(currentNode.getData() + " ,  ") ; 
+			 currentNode = currentNode.getNext();
+		}
+		
+		System.out.println( );
+	}// end method 
 
 	void delete() {
 		System.out.print(GetPromptMsg(1));
@@ -125,16 +138,5 @@ public class SinglyLinkList {
 		} // end if else
 	}// end method
 
-	static void printLinkedList(SinglyLinkList nodeHead) {
-		Node currentNode = nodeHead.head;
-
-		System.out.print("LinkedList: ");
-
-		while (currentNode != null) {
-			System.out.print(currentNode.getData() + ", ");
-
-			// go to next node
-			currentNode = currentNode.getNext();
-		} // end while
-	}// end method
+	
 }

@@ -8,7 +8,7 @@ public class Main {
 
 		DisplayMenu(linkList);
 
-		SinglyLinkList.printLinkedList(linkList);
+		
 	}// end main
 
 	static void DisplayMenu(SinglyLinkList linkList) {
@@ -30,8 +30,7 @@ public class Main {
 			break;
 		}
 		case 1: {
-			// linkList.display();
-			SinglyLinkList.printLinkedList(linkList);
+			linkList.display();
 			break;
 		}
 		case 2: {
