@@ -2,13 +2,12 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	static SinglyLinkList linkList = new SinglyLinkList();
 
-		SinglyLinkList linkList = new SinglyLinkList();
+	public static void main(String[] args) {
 
 		DisplayMenu(linkList);
 
-		
 	}// end main
 
 	static void DisplayMenu(SinglyLinkList linkList) {
@@ -24,7 +23,7 @@ public class Main {
 						": ");
 		//@formatter:on
 
-		switch (sc.nextInt()) {
+		switch (linkList.GetUserInput()) {
 		case 0: {
 			linkList.append();
 			break;
@@ -34,7 +33,14 @@ public class Main {
 			break;
 		}
 		case 2: {
-			linkList.delete();
+			if (!linkList.isThisNodeAvailable(linkList.getHead())) {
+				System.out.println("You don't have a list yet!");
+			} else {
+				System.out.print(linkList.GetPromptMsg(1));
+				sc = new Scanner(System.in);
+				int position = sc.nextInt();
+				linkList.delete(position);
+			} // end if
 			break;
 		}
 		case 3: {
@@ -46,7 +52,7 @@ public class Main {
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Only enter [0], [1], [2], [3], [4]");
+			System.out.println("Only enter [0], [1], [2], [3], [4]");
 		}// end switch
 		DisplayMenu(linkList);
 	}// end method
