@@ -4,15 +4,14 @@ public class SinglyLinkList {
 
 	// field variables
 	Scanner sc;
-
 	private Node head;
+	private Node tail;
+	int numElements = 0;
 
+	// head getter
 	Node getHead() {
 		return this.head;
 	}// end method
-
-	private Node tail;
-	int numElements = 0;
 
 	// Msg getter and setter
 	//@formatter:off
@@ -20,7 +19,7 @@ public class SinglyLinkList {
 						"\nEnter the position of the element to be deleted: ",
 						"\nEnter the value to be removed: "};
 	
-	String[] confirmasionMsg = {"The new element has been added successfully!",
+	String[] confirmationMsg = {"The new element has been added successfully!",
 						"\nThe current elements are: ",
 						"The remaining elements are: ",
 						"Successfully deleted all the occurences of the given value!"};
@@ -37,7 +36,7 @@ public class SinglyLinkList {
 	}// end method
 
 	String GetConfirmationMsg(int index) {
-		return confirmasionMsg[index];
+		return confirmationMsg[index];
 	}// end method
 
 	String GetErrorMsg(int index) {
@@ -47,6 +46,8 @@ public class SinglyLinkList {
 	int GetUserInput(int promptMsg) {
 
 		sc = new Scanner(System.in);
+
+		// call promptMsg array of specified index
 		System.out.print(GetPromptMsg(promptMsg));
 
 		// checks for other kind of input
@@ -134,14 +135,14 @@ public class SinglyLinkList {
 		numElements++;
 	}// end method
 
-	void display() {
+	void display(int confirmationMsgIndex) {
 		// check if the head has value
 		if (head == null) {
 			System.out.println(GetErrorMsg(1));
 			return;
 		}
 		Node currentNode = head;
-		System.out.print(GetConfirmationMsg(1));
+		System.out.print(GetConfirmationMsg(confirmationMsgIndex));
 
 		while (currentNode != null) {
 			System.out.print(currentNode.getData() + " ");
@@ -153,7 +154,6 @@ public class SinglyLinkList {
 
 	void delete(int position) {
 
-		System.out.println(position);
 		if (position < 1 || position > numElements) {
 			System.out.println(GetErrorMsg(2));
 			Main.DisplayMenu(Main.linkList);
@@ -177,7 +177,8 @@ public class SinglyLinkList {
 			} // end if
 			numElements--;
 
-		} // end method
+		} // end if
+
 	}// end method
 
 	void deleteAll() {
