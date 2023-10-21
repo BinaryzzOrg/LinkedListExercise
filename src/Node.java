@@ -2,8 +2,8 @@
 public class Node {
 
 	// field variables
-	private int data;
-	private Node next;
+	private int data; //store the value
+	private Node next;//store the next node address
 
 	// constructor
 	Node(int data) {
@@ -27,5 +27,10 @@ public class Node {
 	Node setNext(Node next) {
 		return this.next = next;
 	}// end method
+
+	//method that displays the data
+	void displayData() {
+		System.out.print("[" + data + "|next]->");
+	}
 
 }// end class
