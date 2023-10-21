@@ -1,14 +1,17 @@
 
 public class Node {
-	// field variable
+
+	// field variables
 	private int data;
 	private Node next;
 
+	// constructor
 	Node(int data) {
 		this.data = data;
 		this.next = null;
 	}// end constructor
 
+	// getter and setters
 	int getData() {
 		return this.data;
 	}// end method
